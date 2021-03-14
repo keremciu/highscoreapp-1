@@ -5,7 +5,7 @@ export function makeServer({ environment = "test" } = {}) {
     environment,
 
     models: {
-      user: Model,
+      score: Model,
     },
 
     seeds(server) {
@@ -14,6 +14,12 @@ export function makeServer({ environment = "test" } = {}) {
           { name: "Jane Doe", totalPoints: 157, clicks: 5 },
           { name: "Lily Allen", totalPoints: 234, clicks: 8 },
           { name: "John Smith", totalPoints: 390, clicks: 10 },
+          { name: "Jane Second", totalPoints: -12, clicks: 5 },
+          { name: "Lily Second", totalPoints: 23, clicks: 8 },
+          { name: "John Smithy", totalPoints: 39, clicks: 3 },
+          { name: "Jane Third", totalPoints: -15, clicks: 5 },
+          { name: "Lily Third", totalPoints: 25, clicks: 5 },
+          { name: "John The", totalPoints: 39, clicks: 1 },
         ],
       });
     },
@@ -21,11 +27,11 @@ export function makeServer({ environment = "test" } = {}) {
     routes() {
       this.namespace = "/highscoreapp";
       this.get("/score", (schema) => {
-        return schema.scores.all();
+        return schema.db.scores;
       });
 
       this.post("/score", (schema, request) => {
-        const score = JSON.parse(request.requestBody).data;
+        const score = JSON.parse(request.requestBody);
         return schema.db.scores.insert(score);
       });
     },

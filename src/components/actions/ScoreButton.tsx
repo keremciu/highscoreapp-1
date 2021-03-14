@@ -1,7 +1,12 @@
 import React from "react";
-import { Grid, Button } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import { getRandomInt } from "../../utils/utils";
 
+const useStyles = makeStyles({
+  marginLeft: {
+    marginLeft: 20,
+  },
+});
 interface ScoreButtonProps {
   clicks: number;
   onStep: (step: number, clicks: number) => void;
@@ -13,6 +18,7 @@ const ScoreButton: React.FC<ScoreButtonProps> = ({
   onStep,
   onRestart,
 }) => {
+  const classes = useStyles();
   const onButtonClick = () => {
     const newClicks = clicks + 1;
     if (newClicks <= 10) {
@@ -24,11 +30,14 @@ const ScoreButton: React.FC<ScoreButtonProps> = ({
   };
 
   return (
-    <Grid container direction="column" justify="center" alignItems="center">
-      <Button variant="contained" color="primary" onClick={onButtonClick}>
-        PLAY!
-      </Button>
-    </Grid>
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={onButtonClick}
+      className={classes.marginLeft}
+    >
+      PLAY
+    </Button>
   );
 };
 
