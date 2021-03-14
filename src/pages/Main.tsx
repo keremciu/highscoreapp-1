@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const getScores = async () => {
+const getScores = async (): Promise<GameData[]> => {
   const res = await fetch(`/highscoreapp/score`);
   const json = await res.json();
   return json;
@@ -38,6 +38,11 @@ const Main: React.FC = () => {
     updateScores();
   };
 
+  const checkBoard = (newScore: GameData) => {
+    const newScores = scores.filter((data) => data.id);
+    setScores([...newScores, newScore]);
+  };
+
   return (
     <Container className={classes.container}>
       <Grid container direction="column" justify="center" alignContent="center">
@@ -56,7 +61,7 @@ const Main: React.FC = () => {
           justify="space-between"
           alignContent="center"
         >
-          <Game onSaved={onSaved} />
+          <Game onSaved={onSaved} checkBoard={checkBoard} />
           <Board scores={scores} />
         </Grid>
       </Grid>

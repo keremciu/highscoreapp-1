@@ -20,9 +20,10 @@ const useStyles = makeStyles(() => ({
 interface NameProps {
   value: string;
   onNameChange: (name: string) => void;
+  error: boolean;
 }
 
-const Name: React.FC<NameProps> = ({ value, onNameChange }) => {
+const Name: React.FC<NameProps> = ({ value, onNameChange, error }) => {
   const classes = useStyles();
 
   return (
@@ -42,6 +43,8 @@ const Name: React.FC<NameProps> = ({ value, onNameChange }) => {
             value={value}
             onChange={(e) => onNameChange(e.target.value)}
             className={classes.margin}
+            error={error}
+            helperText={error ? "Name missing" : ""}
           />
         </Grid>
       </form>

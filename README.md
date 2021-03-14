@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+### Requirements
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Create a React component called HighScoreApp that consists of:
+
+- [x] A button, which adjusts the users score by a number between -100 and 100 when clicked
+- [x] A display of the current scoreAn input field, labeled 'Name', where the user can type their name
+- [x] A submit button that will make a POST request (to dummy endpoint) to save their score, name, and number of times they clicked
+- [x] the user can only click a maximum of 10 times before submitting their score
+- [x] once they submit their score, the click counter gets reset to 0
+
+Additional requirements:
+
+- [x] Style the page
+- [x] Add messaging to let the user know how many clicks they have left, and if they have reached the maximum number of 10 clicks
+- [x] Add a dummied data fetch, assuming that the API service will send you the proper data as an array of objects. The results will NOT be sorted.
+- [x] Display a leaderboard table of the top 10 total points scores, showing:: name, score, number of clicks, average points per click
+- [x] Create a real-time update of the table, so that if the person playing achieves a score that puts them in the leaderboard, show their position in the table (they still need to click Send it! button to save their score), and adjust other positions accordingly (knocking the lowest score out of the display)
+- [x] Write a couple tests
+- [x] Pay special attention to user-friendliness by providing error feedback and making it easy to use the app
+  - added error buondary for no name input when user clicks Play or Submit
+- [x] Make the app responsive then user can use different devices.
+
+### What's used?
+
+Create React App, Miragejs for mocking apis calls, MaterialUI for css
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

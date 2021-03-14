@@ -21,23 +21,34 @@ const ScoreButton: React.FC<ScoreButtonProps> = ({
   const classes = useStyles();
   const onButtonClick = () => {
     const newClicks = clicks + 1;
-    if (newClicks <= 10) {
-      const step = getRandomInt();
-      onStep(step, newClicks);
-    } else {
-      onRestart();
-    }
+    const step = getRandomInt();
+
+    onStep(step, newClicks);
   };
 
   return (
-    <Button
-      variant="contained"
-      color="primary"
-      onClick={onButtonClick}
-      className={classes.marginLeft}
-    >
-      PLAY
-    </Button>
+    <>
+      {clicks === 10 ? (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onRestart}
+          className={classes.marginLeft}
+          data-testid="scoreButton"
+        >
+          RESTART
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onButtonClick}
+          className={classes.marginLeft}
+        >
+          PLAY
+        </Button>
+      )}
+    </>
   );
 };
 

@@ -1,24 +1,24 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
+
 import Paper from "@material-ui/core/Paper";
 import { GameData } from "../../utils/types";
 import { Grid } from "@material-ui/core";
+import { getAverage } from "../../utils/utils";
 
 const useStyles = makeStyles({
   table: {
     maxWidth: 450,
   },
 });
-
-function getAverage(totalPoints: number, clicks: number) {
-  return Math.round(totalPoints / clicks);
-}
 
 interface BoardProps {
   scores: GameData[];
@@ -36,7 +36,7 @@ const Board: React.FC<BoardProps> = ({ scores }) => {
     }));
 
   return (
-    <Grid container xs={12} sm={6} justify="flex-end" alignItems="center">
+    <Grid container item xs={12} sm={6} justify="flex-end" alignItems="center">
       <TableContainer component={Paper} className={classes.table}>
         <Table aria-label="simple table">
           <TableHead>
@@ -49,7 +49,7 @@ const Board: React.FC<BoardProps> = ({ scores }) => {
           </TableHead>
           <TableBody>
             {top10.map((row) => (
-              <TableRow key={row.name}>
+              <TableRow key={`${row.name}${row.id}`}>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
